@@ -1,9 +1,9 @@
 #include "IsolatedFunctions.h"
-#include "skse/skse_version.h"	// What version of SKSE is running?
+#include "skse64_common/skse_version.h"	// What version of SKSE is running?
 #include <shlobj.h>				// CSIDL_MYCODUMENTS
-#include "skse/PluginAPI.h"		// super
+#include "skse64/PluginAPI.h"		// super
 #include "GameEvents.h"
-#include "skse/SafeWrite.h"
+#include "skse64_common/SafeWrite.h"
 
 int __cdecl _purecall(void)
 {
@@ -42,7 +42,8 @@ DWORD WINAPI InitializeConsole(LPVOID lpParam)
 			// Second one must be close because it happens on another thread and toggle twice fast would open twice
 			// since console didn't have time to open yet.
 			const int closeConsole = 0x847130;
-			_asm
+			// TODO: update refs and fix the ASM
+			/*_asm
 			{
 				pushad
 				pushfd
@@ -50,7 +51,7 @@ DWORD WINAPI InitializeConsole(LPVOID lpParam)
 				call closeConsole
 				popfd
 				popad
-			}
+			}*/
 
 			// Don't need this thread anymore.
 			return 0;
@@ -206,7 +207,7 @@ extern "C"
 
 			return false;
 		}
-		if (skse->runtimeVersion != RUNTIME_VERSION_1_9_32_0)
+		if (skse->runtimeVersion != RUNTIME_VR_VERSION_1_4_15)
 		{
 			_MESSAGE("unsupported runtime version %08X", skse->runtimeVersion);
 

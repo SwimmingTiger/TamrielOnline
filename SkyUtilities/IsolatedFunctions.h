@@ -1,8 +1,8 @@
 #pragma once
 
-#include "skse/PapyrusVM.h"
-#include "skse/PapyrusNativeFunctions.h"
-#include "skse/GameReferences.h"
+#include "skse64/PapyrusVM.h"
+#include "skse64/PapyrusNativeFunctions.h"
+#include "skse64/GameReferences.h"
 
 class IsolatedFunctions
 {

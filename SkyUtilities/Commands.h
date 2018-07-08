@@ -3,7 +3,8 @@
 
 #include <sstream>
 #include <iomanip>
-#include "skse\GameMenus.h"
+#include "skse64/GameMenus.h"
+#include "xbyak/xbyak.h"
 #include <time.h>
 #include <fstream>
 
@@ -24,17 +25,20 @@ struct ConsoleHolder
 		if (consoleStr == NULL)
 			consoleStr = new BSFixedString("Console");
 
-		_cptr = (int)MenuManager::GetSingleton()->GetMenu(consoleStr);
+		_cptr = (intptr_t)MenuManager::GetSingleton()->GetMenu(consoleStr);
 	}
 
 	~ConsoleHolder()
 	{
 		if (_cptr != 0)
 		{
+			// TODO: update the decRef
 			const int decRef = 0x9241A0;
 			int lPtr = _cptr;
 			_cptr = 0;
-			_asm
+
+			// TODO: implement the ASM by xbyak
+			/*_asm
 			{
 				pushad
 				pushfd
@@ -42,14 +46,14 @@ struct ConsoleHolder
 					call decRef
 					popfd
 					popad
-			}
+			}*/
 		}
 	}
 
 	int GetPointer() { return _cptr; }
 
 private:
-	int _cptr;
+	intptr_t _cptr;
 };
 
 // Execute command in console.
@@ -68,12 +72,13 @@ static void nExecuteCommand(const char * text)
 	memset(unkStruct, 0, 64);
 
 	unkStruct[4] = ptr;
-	unkStruct[6] = (int)(&unkStruct[7]); // Lazy, there's actually another structure here
+	unkStruct[6] = (intptr_t)(&unkStruct[7]); // Lazy, there's actually another structure here
 										 //unkStruct[8] = 0; // If this is 1 << 6 then [9] is char ** instead of char *
-	unkStruct[9] = (int)text;
+	unkStruct[9] = (intptr_t)text;
 
+	// TODO: update runScript and implement ASM
 	const int runScript = 0x847080;
-	_asm
+	/*_asm
 	{
 		pushad
 		pushfd
@@ -83,7 +88,7 @@ static void nExecuteCommand(const char * text)
 			add esp, 4
 			popfd
 			popad
-	}
+	}*/
 
 	free(unkStruct);
 }

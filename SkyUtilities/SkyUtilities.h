@@ -1,8 +1,9 @@
 #pragma once
 
+#include "common/IErrors.h"
 #include "NetworkHandler.h"
 #include "common/IMemPool.h"
-#include "skse/GameThreads.h"
+#include "skse64/GameThreads.h"
 
 struct TESEquipEvent
 {

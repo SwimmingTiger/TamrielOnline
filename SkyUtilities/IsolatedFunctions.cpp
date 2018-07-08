@@ -1,6 +1,6 @@
 #include "IsolatedFunctions.h"
-#include "skse/GameForms.h"
-#include "skse/GameRTTI.h"
+#include "skse64/GameForms.h"
+#include "skse64/GameRTTI.h"
 
 TESForm* IsolatedFunctions::Retrieve(StaticFunctionTag* base, BSFixedString refId)
 {

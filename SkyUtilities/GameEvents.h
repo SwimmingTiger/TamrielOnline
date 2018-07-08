@@ -1,14 +1,14 @@
 #pragma once
 #include "SkyUtilities.h"
-#include "skse/PapyrusUI.h"
-#include "skse/CustomMenu.h"
-#include "skse/GlobalLocks.h"
-#include "skse/GameBSExtraData.h"
-#include "skse/GameExtraData.h"
+#include "skse64/PapyrusUI.h"
+#include "skse64/CustomMenu.h"
+#include "skse64/GlobalLocks.h"
+#include "skse64/GameBSExtraData.h"
+#include "skse64/GameExtraData.h"
 
 #include "NativeFunctions.h"
 
-struct TESMoveAttachDetachEvent
+/*struct TESMoveAttachDetachEvent
 {
 	Actor* reference;
 	UInt32 unk1;
@@ -22,7 +22,7 @@ struct TESMoveAttachDetachEvent
 	UInt32 unk5;
 	Actor* referenceC;
 	TESObjectCELL* destinationCell;
-};
+};*/
 
 struct TESActivateEvent
 {
@@ -86,13 +86,13 @@ public:
 	virtual EventResult ReceiveEvent(TESEquipEvent* evn, EventDispatcher<TESEquipEvent> * dispatcher) = 0;
 };
 
-template <>
+/*template <>
 class BSTEventSink <TESMoveAttachDetachEvent>
 {
 public:
 	virtual ~BSTEventSink() {}
 	virtual EventResult ReceiveEvent(TESMoveAttachDetachEvent* evn, EventDispatcher<TESMoveAttachDetachEvent> * dispatcher) = 0;
-};
+};*/
 
 template <>
 class BSTEventSink <TESActivateEvent>
@@ -224,7 +224,7 @@ public:
 			if (NetworkHandler::PreventingUnauthorizedSpawn(evn->reference))
 				return kEvent_Continue;
 
-			NetworkHandler::UpdateLocalNpcList(evn->reference);
+			NetworkHandler::UpdateLocalNpcList((Actor*)evn->reference);
 
 			return EventResult::kEvent_Continue;
 		}
@@ -437,7 +437,7 @@ public:
 					for (int i = 0; (*cellList)[i]; i++)
 					{
 						tCell = (*cellList)[i];
-						tExtra = tCell->extraData;
+						tExtra = tCell->unk048.extraData;
 						for (; tExtra->next; tExtra = tExtra->next)
 						{
 							if (tExtra->GetType() == kExtraData_Location)

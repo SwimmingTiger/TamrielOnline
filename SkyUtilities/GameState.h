@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "skse\GameReferences.h"
+#include "skse64\GameReferences.h"
 
 using namespace std;
 

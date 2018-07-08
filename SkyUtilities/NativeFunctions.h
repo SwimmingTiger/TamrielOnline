@@ -2,17 +2,17 @@
 #define __NATIVEFUNCTIONS_H
 
 #include <string>
-#include "skse\NiNodes.h"
-#include "skse\PapyrusObjectReference.h"
-#include "skse\PapyrusQuest.h"
-#include "skse/PapyrusGame.h"
-#include "skse/PapyrusEvents.h"
-#include "skse/GameData.h"
-#include "skse/GameRTTI.h"
-#include "skse/PapyrusArgs.h"
-#include "skse/PapyrusNativeFunctions.h"
-#include "skse/PapyrusForm.h"
-#include "skse/GameExtraData.h"
+#include "skse64\NiNodes.h"
+#include "skse64\PapyrusObjectReference.h"
+#include "skse64\PapyrusQuest.h"
+#include "skse64/PapyrusGame.h"
+#include "skse64/PapyrusEvents.h"
+#include "skse64/GameData.h"
+#include "skse64/GameRTTI.h"
+#include "skse64/PapyrusArgs.h"
+#include "skse64/PapyrusNativeFunctions.h"
+#include "skse64/PapyrusForm.h"
+#include "skse64/GameExtraData.h"
 
 //SAMPLE - KeepOffsetFromActor((*g_skyrimVM)->GetClassRegistry(), 0, *g_thePlayer, *g_thePlayer, 0, 0, 0, 0, 0, 0, 500, 20);
 typedef void(*_KeepOffsetFromActor)(const VMClassRegistry* registry, const UInt32 stackId, Actor* target, const Actor* arTarget,

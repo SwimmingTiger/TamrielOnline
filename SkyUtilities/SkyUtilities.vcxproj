@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -23,7 +31,7 @@
     </SccProvider>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>SkyUtilities</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -33,10 +41,23 @@
     <PlatformToolset>v140</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -45,7 +66,13 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -54,11 +81,17 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <GenerateManifest>true</GenerateManifest>
+    <LibraryPath>C:\Users\Siegfre\Downloads\sqlite-dll-win32-x86-3081002;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <GenerateManifest>true</GenerateManifest>
     <LibraryPath>C:\Users\Siegfre\Downloads\sqlite-dll-win32-x86-3081002;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -67,12 +100,16 @@
     <CodeAnalysisRuleSet>D:\VS14\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
+    <CodeAnalysisRuleSet>D:\VS14\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\DEV\modular-boost;$(SolutionDir);$(SolutionDir)\..;D:\Downloads\RakNet-master-unmodified\RakNet-master\Source;D:\Downloads\RakNet-master-unmodified\RakNet-master\DependentExtensions\miniupnpc-1.6.20120410;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\DEV\modular-boost;$(SolutionDir);$(SolutionDir)\sksevr;D:\Downloads\RakNet-master-unmodified\RakNet-master\Source;D:\Downloads\RakNet-master-unmodified\RakNet-master\DependentExtensions\miniupnpc-1.6.20120410;C:\work\Photon-Windows-Sdk_v4-1-10-1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -88,6 +125,9 @@
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <ShowIncludes>false</ShowIncludes>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>
+      </LanguageStandard>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
@@ -96,6 +136,45 @@
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalLibraryDirectories>D:\DEV\modular-boost\stage\lib;D:\Projects\Skyrim Multiplayer\SKSE SmartFox\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Ws2_32.lib;winmm.lib;Rpcrt4.lib;D:\DEV\Microsoft SDKs\Windows\7.0\Lib\dwmapi.lib;D:\Projects\Skyrim Multiplayer\SKSE SmartFox\Debug\skse.lib;D:\Projects\Skyrim Multiplayer\SKSE SmartFox\Debug\common.lib;D:\Downloads\RakNet-master-unmodified\RakNet-master\Lib\RakNet_VS2008_LibStatic_Debug_Win32.lib;D:\Downloads\RakNet-master-unmodified\RakNet-master\Lib\RakNet_VS2008_MiniupnpcStatic_Debug_Win32.lib;IPHlpApi.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>D:\DEV\modular-boost;$(SolutionDir);$(SolutionDir)\sksevr;D:\Downloads\RakNet-master-unmodified\RakNet-master\Source;D:\Downloads\RakNet-master-unmodified\RakNet-master\DependentExtensions\miniupnpc-1.6.20120410;C:\work\Photon-Windows-Sdk_v4-1-10-1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <SDLCheck>true</SDLCheck>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <CompileAs>Default</CompileAs>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <ShowIncludes>false</ShowIncludes>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>
+      </LanguageStandard>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>D:\DEV\modular-boost\stage\lib;D:\Projects\Skyrim Multiplayer\SKSE SmartFox\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib;winmm.lib;Rpcrt4.lib;dwmapi.lib;IPHlpApi.Lib;C:\work\Photon-Windows-Sdk_v4-1-10-1\Photon-cpp\lib\Photon-cpp_vc15_debug_windows_mt_x64.lib;C:\work\Photon-Windows-Sdk_v4-1-10-1\LoadBalancing-cpp\lib\LoadBalancing-cpp_vc15_debug_windows_mt_x64.lib;C:\work\Photon-Windows-Sdk_v4-1-10-1\Common-cpp\lib\Common-cpp_vc15_debug_windows_mt_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>
       </OptimizeReferences>
       <EnableCOMDATFolding>
@@ -146,8 +225,47 @@
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>SkyUtilities;D:\DEV\Photon-Windows-Sdk_v4-1-5-1;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PLUGIN_EXAMPLE_EXPORTS;STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ForcedIncludeFiles>common/IPrefix.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <EnableParallelCodeGeneration>
+      </EnableParallelCodeGeneration>
+      <CompileAs>Default</CompileAs>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ShowIncludes>false</ShowIncludes>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <CallingConvention>Cdecl</CallingConvention>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AdditionalDependencies>..\..\..\DEV\Photon-Windows-Sdk_v4-1-5-1\Photon-cpp\lib\Photon-cpp_vc14_release_windows_mt_Win32.lib;..\..\..\DEV\Photon-Windows-Sdk_v4-1-5-1\Common-cpp\lib\Common-cpp_vc14_release_windows_mt_Win32.lib;..\..\..\DEV\Photon-Windows-Sdk_v4-1-5-1\LoadBalancing-cpp\lib\LoadBalancing-cpp_vc14_release_windows_mt_Win32.lib;..\Release\skse.lib;..\Release\common.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameMenus.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="IsolatedFunctions.cpp" />
     <ClCompile Include="NativeFunctions.cpp" />
@@ -156,8 +274,6 @@
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="NetworkHandler.cpp" />
     <ClCompile Include="NetworkState.cpp" />
-    <ClCompile Include="..\skse\GameObjects.cpp" />
-    <ClCompile Include="..\skse\GameReferences.cpp" />
     <ClCompile Include="SkyUtilities.cpp" />
     <ClCompile Include="GameEvents.cpp" />
     <ClCompile Include="Utilities.cpp" />
@@ -165,7 +281,6 @@
   <ItemGroup>
     <ClInclude Include="Commands.h" />
     <ClInclude Include="enums.h" />
-    <ClInclude Include="GameMenus.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Networking.h" />
     <ClInclude Include="NetworkState.h" />
@@ -176,11 +291,23 @@
     <ClInclude Include="SkyUtilities.h" />
     <ClInclude Include="GameEvents.h" />
     <ClInclude Include="SME_Prefix.h" />
+    <ClInclude Include="StaticAssert.h" />
     <ClInclude Include="Tests.h" />
     <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\common_vc14.vcxproj">
+      <Project>{472e19ab-def0-42df-819b-18722e8dc822}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\sksevr\skse64\skse64.vcxproj">
+      <Project>{639411c0-fc23-4819-a0c5-429a4e5d8a51}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\sksevr\skse64_common\skse64_common.vcxproj">
+      <Project>{5fd1c08d-db80-480c-a1c6-f0920005cd13}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

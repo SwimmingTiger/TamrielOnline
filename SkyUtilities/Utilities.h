@@ -7,10 +7,10 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
-#include "skse\GameForms.h"
-#include "skse\GameBSExtraData.h"
-#include "skse\GameInput.h"
-#include "skse\GameReferences.h"
+#include "skse64\GameForms.h"
+#include "skse64\GameBSExtraData.h"
+#include "skse64\GameInput.h"
+#include "skse64\GameReferences.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -59,7 +59,7 @@ class ActorEx : public Actor
 public:
 	MEMBER_FN_PREFIX(Actor);
 	DEFINE_MEMBER_FN(KOFA_SetTarget, float*, 0x006BD6C0, float* afCatchUpRadius);
-	DEFINE_MEMBER_FN(KOFA_Call, void, 0x006B4500, float afCatchUpRadius, int offsetPosArray, int offsetRotArray, float afCatchUpRadiusImmutable, float afFollowRadius);
+	DEFINE_MEMBER_FN(KOFA_Call, void, 0x006B4500, float afCatchUpRadius, intptr_t offsetPosArray, intptr_t offsetRotArray, float afCatchUpRadiusImmutable, float afFollowRadius);
 	DEFINE_MEMBER_FN(IS_ON_MOUNT_RAW, bool, 0x004A5010);
 	DEFINE_MEMBER_FN(CLEAR_KEEP_OFFSET_FROM_ACTOR_RAW, void, 0x006B45D0);
 
@@ -95,7 +95,7 @@ public:
 		angleOffset[2] = afOffsetAngleY;
 
 		CALL_MEMBER_FN((ActorEx*)arTarget, KOFA_SetTarget)(&catchupRadius);
-		CALL_MEMBER_FN(this, KOFA_Call)(catchupRadius, (int)&posOffset, (int)&angleOffset, unmutableCatupRadius, afFollowRadius);
+		CALL_MEMBER_FN(this, KOFA_Call)(catchupRadius, (intptr_t)&posOffset, (intptr_t)&angleOffset, unmutableCatupRadius, afFollowRadius);
 	}
 };
 

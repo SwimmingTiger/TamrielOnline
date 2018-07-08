@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GameMenus.cpp">
-      <Filter>source\SKSE</Filter>
-    </ClCompile>
     <ClCompile Include="IsolatedFunctions.cpp">
       <Filter>source\Papyrus</Filter>
     </ClCompile>
@@ -37,12 +34,6 @@
     <ClCompile Include="GameEvents.cpp">
       <Filter>source\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\skse\GameReferences.cpp">
-      <Filter>source\SKSE</Filter>
-    </ClCompile>
-    <ClCompile Include="..\skse\GameObjects.cpp">
-      <Filter>source\SKSE</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="md5.h">
@@ -53,9 +44,6 @@
     </ClInclude>
     <ClInclude Include="SkyUtilities.h">
       <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMenus.h">
-      <Filter>headers\SKSE</Filter>
     </ClInclude>
     <ClInclude Include="IsolatedFunctions.h">
       <Filter>headers\Papyrus</Filter>
@@ -90,6 +78,9 @@
     <ClInclude Include="enums.h">
       <Filter>headers\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="StaticAssert.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -97,9 +88,6 @@
     </Filter>
     <Filter Include="source">
       <UniqueIdentifier>{6cdf2ba1-d5eb-4672-aab8-803d543265cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\SKSE">
-      <UniqueIdentifier>{7f85c212-1db5-4b34-b2bc-681f45eb34b8}</UniqueIdentifier>
     </Filter>
     <Filter Include="headers\Helpers">
       <UniqueIdentifier>{127907f9-d33c-49d4-b9c2-56a573f7f5b4}</UniqueIdentifier>
@@ -124,9 +112,6 @@
     </Filter>
     <Filter Include="source\Game">
       <UniqueIdentifier>{b193571f-5ff6-4107-9f17-32483c7d9140}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="headers\SKSE">
-      <UniqueIdentifier>{752d095c-41d6-415b-96a8-bb51a288e47c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

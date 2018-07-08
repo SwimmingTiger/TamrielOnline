@@ -37,6 +37,7 @@ documentation and/or software.
 #include <cstdio>
 #include <cstring>
 #include <iostream>
+#include <string>
 
 
 // Constants for MD5Transform routine.

@@ -229,7 +229,7 @@ void Networking::customEventAction(int playerNr, nByte eventCode, const ExitGame
 
 int Networking::getPeerId(void)
 {
-	return mLoadBalancingClient.getPeerId();
+	return mLoadBalancingClient.getPeerID();
 }
 
 int Networking::getLocalId(void)

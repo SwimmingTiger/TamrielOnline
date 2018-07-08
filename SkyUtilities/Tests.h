@@ -191,7 +191,7 @@ namespace Tests
 				BGSLocation* plLocation = (pLocation ? pLocation->location : NULL);
 				ExtraPersistentCell* eCell = static_cast<ExtraPersistentCell*>(randomActor->extraData.GetByType(kExtraData_PersistentCell));
 				TESObjectCELL* tCell = (eCell ? eCell->cell : NULL);
-				ExtraPersistentCell* iCell = static_cast<ExtraPersistentCell*>(((BaseExtraList*)altCell->extraData)->GetByType(kExtraData_PersistentCell));
+				ExtraPersistentCell* iCell = static_cast<ExtraPersistentCell*>(((BaseExtraList*)altCell->unk048.extraData)->GetByType(kExtraData_PersistentCell));
 				TESObjectCELL* ieCell = (iCell ? iCell->cell : NULL);
 				ExtraPersistentCell* rCell = static_cast<ExtraPersistentCell*>(randomObject->extraData.GetByType(kExtraData_PersistentCell));
 				TESObjectCELL* reCell = (rCell ? rCell->cell : NULL);
@@ -279,8 +279,8 @@ namespace Tests
 				_MESSAGE("altCell Worldspace");
 
 				// All prior worldspaces are equivalent except for this one, and they are all NULL when a location is loading.
-				if (altCell->unk84)
-					_MESSAGE(to_string(altCell->unk84->formID).c_str());
+				if (altCell->unk120)
+					_MESSAGE(to_string(altCell->unk120->formID).c_str());
 
 				_MESSAGE("tCell");
 

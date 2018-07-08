@@ -1,12 +1,12 @@
 #include "NativeFunctions.h"
-#include "skse/PapyrusInput.h"
-#include "skse/PapyrusShout.h"
-#include "skse/PapyrusActorBase.h"
-#include "skse/PapyrusActor.h"
-#include "skse/GameBSExtraData.h"
-#include "skse/GameReferences.h"
-#include "skse/GameExtraData.h"
-#include "skse/PapyrusWornObject.h"
+#include "skse64/PapyrusInput.h"
+#include "skse64/PapyrusShout.h"
+#include "skse64/PapyrusActorBase.h"
+#include "skse64/PapyrusActor.h"
+#include "skse64/GameBSExtraData.h"
+#include "skse64/GameReferences.h"
+#include "skse64/GameExtraData.h"
+#include "skse64/PapyrusWornObject.h"
 #include "Utilities.h"
 #include "Commands.h"
 
@@ -137,13 +137,13 @@ struct Data
 	UInt8	type;			// 07
 };
 
-bool NativeFunctions::QIsActive(TESQuest* quest) { return ((Data*)&quest->unk07C)->flags.active; }
-bool NativeFunctions::QIsCompleted(TESQuest* quest) { return ((Data*)&quest->unk07C)->flags.completed; }
-bool NativeFunctions::QIsRunning(TESQuest* quest) { return ((Data*)&quest->unk07C)->flags.running && !((Data*)&quest->unk07C)->flags.stopping && quest->unk148 == 0; }
-bool NativeFunctions::QIsStarting(TESQuest* quest) { return ((Data*)&quest->unk07C)->flags.running && !((Data*)&quest->unk07C)->flags.stopping && quest->unk148 != 0; }
-bool NativeFunctions::QIsStopping(TESQuest* quest) { return !((Data*)&quest->unk07C)->flags.running && ((Data*)&quest->unk07C)->flags.stopping; }
-bool NativeFunctions::QIsStopped(TESQuest* quest) { return !((Data*)&quest->unk07C)->flags.running && !((Data*)&quest->unk07C)->flags.stopping; }
-UInt16 NativeFunctions::QGetCurrentStageID(TESQuest* quest) { return quest->unk138; }
+bool NativeFunctions::QIsActive(TESQuest* quest) { return ((Data*)&quest->unk0D8)->flags.active; }
+bool NativeFunctions::QIsCompleted(TESQuest* quest) { return ((Data*)&quest->unk0D8)->flags.completed; }
+bool NativeFunctions::QIsRunning(TESQuest* quest) { return ((Data*)&quest->unk0D8)->flags.running && !((Data*)&quest->unk0D8)->flags.stopping && quest->unk148 == 0; }
+bool NativeFunctions::QIsStarting(TESQuest* quest) { return ((Data*)&quest->unk0D8)->flags.running && !((Data*)&quest->unk0D8)->flags.stopping && quest->unk148 != 0; }
+bool NativeFunctions::QIsStopping(TESQuest* quest) { return !((Data*)&quest->unk0D8)->flags.running && ((Data*)&quest->unk0D8)->flags.stopping; }
+bool NativeFunctions::QIsStopped(TESQuest* quest) { return !((Data*)&quest->unk0D8)->flags.running && !((Data*)&quest->unk0D8)->flags.stopping; }
+UInt16 NativeFunctions::QGetCurrentStageID(TESQuest* quest) { return quest->unk228; }
 
 bool NativeFunctions::GetAnimationVariableBool(Actor* target, std::string asVariableNam)
 {
@@ -247,7 +247,9 @@ void NativeFunctions::ChangeHeadPart(TESObjectREFR* player, UInt32 partId)
 	if (!newPart || !thePlayer)
 		return;
 
-	papyrusActor::ChangeHeadPart(thePlayer, newPart);
+	// No third person mode in VR
+	// TODO: enable it for SSE
+	//papyrusActor::ChangeHeadPart(thePlayer, newPart);
 }
 
 void NativeFunctions::SetHeight(TESObjectREFR* theActor, float height)
@@ -436,11 +438,13 @@ public:
 
 std::vector<TESObjectREFR*> NativeFunctions::GetCloseReferences(TESObjectREFR* player, float fRadius, bool sameLocation)
 {
-	GridCellArray* arr = (GridCellArray*)(*g_TES)->gridCellArray;
-	double fRadiusSquare = fRadius * fRadius;
+	// TODO: fix the function
+
+	/*GridCellArray* arr = (GridCellArray*)(*g_TES)->gridCellArray;
+	double fRadiusSquare = fRadius * fRadius;*/
 
 	std::vector<TESObjectREFR*> list;
-	int x, y;
+	/*int x, y;
 	for (x = 0; x < arr->size; x++)
 	{
 		for (y = 0; y < arr->size; y++)
@@ -476,7 +480,7 @@ std::vector<TESObjectREFR*> NativeFunctions::GetCloseReferences(TESObjectREFR* p
 				}
 			}
 		}
-	}
+	}*/
 
 	return list;
 }
@@ -522,15 +526,17 @@ std::vector<TESObjectREFR*> NativeFunctions::GetAllLockedObjects(TESObjectREFR* 
 
 std::vector<TESObjectREFR*> NativeFunctions::GetCloseLockedRefs(TESObjectREFR* player, float fRadius)
 {
-	GridCellArray* arr = (GridCellArray*)(*g_TES)->gridCellArray;
-	double fRadiusSquare = fRadius * fRadius;
+	// TODO: fix the function
+
+	/*GridCellArray* arr = (GridCellArray*)(*g_TES)->gridCellArray;
+	double fRadiusSquare = fRadius * fRadius;*/
 
 	std::vector<TESObjectREFR*> list;
 
 	if (player == NULL)
 		return list;
 
-	int x, y;
+	/*int x, y;
 	for (x = 0; x < arr->size; x++)
 	{
 		for (y = 0; y < arr->size; y++)
@@ -557,17 +563,19 @@ std::vector<TESObjectREFR*> NativeFunctions::GetCloseLockedRefs(TESObjectREFR* p
 				}
 			}
 		}
-	}
+	}*/
 
 	return list;
 }
 
 std::vector<TESObjectREFR*> NativeFunctions::GetLocationReferences(BGSLocation* PlayerCurrentLocation)
 {
-	GridCellArray* arr = (GridCellArray*)(*g_TES)->gridCellArray;
+	// TODO: fix the function
+
+	/*GridCellArray* arr = (GridCellArray*)(*g_TES)->gridCellArray;*/
 
 	std::vector<TESObjectREFR*> list;
-	int x, y;
+	/*int x, y;
 	for (x = 0; x < arr->size; x++)
 	{
 		for (y = 0; y < arr->size; y++)
@@ -594,7 +602,7 @@ std::vector<TESObjectREFR*> NativeFunctions::GetLocationReferences(BGSLocation* 
 				}
 			}
 		}
-	}
+	}*/
 
 	return list;
 }
